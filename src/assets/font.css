@@ -1,0 +1,21 @@
+
+@font-face {
+    font-family: Avenir;
+    src: url('../assets/font/avenir-regular/Avenir-font/Avenir-Regular.ttf') format('ttf')
+    
+    /* Safari, Android, iOS */
+}
+
+
+  @font-face {
+    font-family: ClashDisplay-Bold;
+    src: url('../assets/font/ClashDisplay_Complete/Fonts/OTF/ClashDisplay-Bold.otf')format('otf'),
+
+
+    /* font-weight: bold; */
+  }
+
+  @font-face{
+    font-family: ClashDisplay-semibold;
+    src: url('../assets/font/ClashDisplay_Complete/Fonts/OTF/ClashDisplay-Bold.otf')format('otf'),
+  }
