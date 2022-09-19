@@ -1,5 +1,6 @@
 import React from "react";
-import { ProgressContainer, ProgressWrapper } from "./Commonstylepage";
+import { ProgressContainer } from "./Commonstylepage";
+
 const Progressnft = () => {
   return (
     <ProgressContainer>

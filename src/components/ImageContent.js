@@ -16,7 +16,7 @@ function ImageContent({ image, name, role, align, side }) {
               <div className="developerTitle">{role}</div>
             </div>
           )}
-          <img src={image} className="dev-image" />
+          <img src={image} className="dev-image" alt="" />
           {!side && (
             <div className="developer-info">
               <div className="developername">{name}</div>

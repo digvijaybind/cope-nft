@@ -212,7 +212,6 @@ const MintContainer = styled("div")`
 `;
 
 const Toaster = styled('div')`
-// position: relative;
   .custom-toast{
     position: absolute;
      top: 80px;
@@ -234,6 +233,7 @@ const Toaster = styled('div')`
   }
   .plugin{
     color: ${Color.white};
+    text-decoration: underline;
   }
 
   @media(max-width: 650px){

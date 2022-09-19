@@ -1,17 +1,15 @@
 import React, { useState } from "react";
+import { Modal, Alert } from "@mui/material";
+import { ethers } from "ethers";
 import CommonPage from "../components/CommonPage";
+import WalletModal from "../components/Modal";
+import { AppContainer, EmptyContainer } from "./Commonstylepage";
 import ImageContent from "../components/ImageContent";
-import { useNavigate, useLocation } from "react-router-dom";
 import Bomb from "../assets/image/money-bag-dynamic-color.svg";
 import PortateOne from "../assets/image/Rectangle.svg";
 import PortateTwo from "../assets/image/RectangleTwo.svg";
 import Bottomleft from "../assets/image/Bottomleft.svg";
 import Bottomright from "../assets/image/Bottomright.svg";
-import { Modal } from "@mui/material";
-import WalletModal from "../components/Modal";
-import { AppContainer, EmptyContainer } from "./Commonstylepage";
-import Alert from '@mui/material/Alert';
-import { ethers } from "ethers";
 import "./Commonstylepage";
 import { Toaster } from "./Commonstylepage";
 
@@ -37,13 +35,8 @@ function Home() {
         setOpen(false)
         setToast(data)
     };
-   
+
     const handleOpen = () => setOpen(true);
- 
-
-   
-
-
     return (
         <AppContainer>
             <CommonPage
@@ -70,17 +63,17 @@ function Home() {
             </Modal>
             <EmptyContainer>
                 <div className="empty-content">
-                    {Array.from(Array(8)).map((data, index) => {
+                    {Array.from(Array(8)).map((_, index) => {
                         return <div className={`empty-box ${index === 0 && 'frontMargin'} ${index === 7 && 'backMargin'}`}></div>;
                     })}
                 </div>
                 <div className="middle-content">
-                    {Array.from(Array(7)).map((data, index) => {
+                    {Array.from(Array(7)).map((_, index) => {
                         return <div className={`empty-box`}></div>;
                     })}
                 </div>
                 <div className="empty-content">
-                    {Array.from(Array(8)).map((data, index) => {
+                    {Array.from(Array(8)).map((_, index) => {
                         return <div className={`empty-box ${index === 0 && 'frontMargin'} ${index === 7 && 'backMargin'}`}></div>;
                     })}
                 </div>

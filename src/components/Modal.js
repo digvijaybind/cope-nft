@@ -7,7 +7,6 @@ import MuiAlert from '@mui/material/Alert';
 import Cancelicon from "../assets/image/cancel.svg";
 import MetaMaskWallet from "./MetaMaskWallet";
 import WalletConnect from "./WalletConnect";
-import { useToasts } from 'react-toast-notifications';
 import { Toaster } from "../pages/Commonstylepage";
 import { useEagerConnect, useInactiveListener } from "../hooks";
 
@@ -17,7 +16,7 @@ import {
 } from "../utils/connectors";
 import { useNavigate } from "react-router-dom";
 
-const ONBOARD_TEXT = "Click to install MetaMask!";
+// const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
 const style = {
   position: "absolute",
@@ -35,34 +34,27 @@ function Alert(props) {
 }
 const WalletModal = ({ open, onClose, callToast }) => {
   const [toast, setToast] = useState(false)
-  const [metamaskButtonText, setMetamaskButtonText] = useState(ONBOARD_TEXT);
+  // const [metamaskButtonText, setMetamaskButtonText] = useState(ONBOARD_TEXT);
   const [activatingConnector, setActivatingConnector] = useState();
-  const [alerttoast, setAlerttoast] = useState(false);
   const { account, activate, connector } = useWeb3React();
   const onboarding = useRef();
   const navigate = useNavigate();
 
-  const handleClose = () => {
 
-    setAlerttoast(false);
-
-  }
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
   const triedEager = useEagerConnect();
 
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector);
 
-  
-  const { addToast } = useToasts()
   const onConnectWithMetamaskClick = async () => {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       await setActivatingConnector(injected);
       await activate(injected);
       navigate(`/Mintnft?status=${1}`)
-      
+
     } else {
-      
+
       callToast(true)
     }
     localStorage.setItem("fortmaticConnect", "false");
@@ -88,7 +80,7 @@ const WalletModal = ({ open, onClose, callToast }) => {
       if (account && account.length > 0) {
         onboarding.current.stopOnboarding();
       } else {
-        setMetamaskButtonText(CONNECT_TEXT);
+        // setMetamaskButtonText(CONNECT_TEXT);
       }
     }
   }, [account]);
@@ -105,14 +97,12 @@ const WalletModal = ({ open, onClose, callToast }) => {
           <div id="keep-mounted-modal-title" className="modal-title">
             Connect Wallet
           </div>
-          <img src={Cancelicon} onClick={onClose} className="closeIcon" />
+          <img src={Cancelicon} onClick={onClose} className="closeIcon" alt="" />
         </div>
         <div id="keep-mounted-modal-description" className="modal-content">
           <MetaMaskWallet onMetamaskClick={onConnectWithMetamaskClick} />
           <WalletConnect onWalletConnect={onConnectWithWalletConnectClick} />
-          {/* <Snackbar open={alerttoast} autoHideDuration={6000} onClose={handleClose}> */}
 
-          {/* </Snackbar> */}
         </div>
       </Box>
       {toast &&

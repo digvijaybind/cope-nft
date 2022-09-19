@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Bomb from "../assets/image/money-bag-dynamic-color.svg";
 import { useWeb3React } from "@web3-react/core";
 import { useNavigate, useLocation } from "react-router-dom";
+import Alert from '@mui/material/Alert';
 import { useNftcontract } from "../hooks";
 import ProgresNft from "../pages/Progressnft";
-import Alert from '@mui/material/Alert';
 import CommonPage from "../components/CommonPage";
+import Bomb from "../assets/image/money-bag-dynamic-color.svg";
 import { MintContainer, Toaster } from "./Commonstylepage";
 
 const Mintnft = (props) => {
@@ -40,7 +40,7 @@ const Mintnft = (props) => {
     setToast(data)
     navigate(`/Mintnft?status=${null}`)
   }
-  console.log(status, 'icon')
+  
   return (
     <div>
       {loading ? (

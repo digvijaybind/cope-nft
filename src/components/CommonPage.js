@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
+import MetaMaskOnboarding from "@metamask/onboarding";
+import { useWeb3React } from "@web3-react/core";
+import { useNavigate } from "react-router-dom";
+
 import {
   MainContainer,
   LeftSideSection,
   RightSideSection,
 } from "./commonstyle";
 import CommonButton from "./Button";
-
-///
-
-import MetaMaskOnboarding from "@metamask/onboarding";
-import { useWeb3React } from "@web3-react/core";
-
-
 import { useEagerConnect, useInactiveListener } from "../hooks";
-import { useNavigate } from "react-router-dom";
+
 
 const ONBOARD_TEXT = "Click to install MetaMask!";
 const CONNECT_TEXT = "Connect Metamask";
-//
 
 function CommonPage({
   Img,
@@ -32,10 +28,10 @@ function CommonPage({
   icon
 }) {
   //
-  const [metamaskButtonText, setMetamaskButtonText] = useState(ONBOARD_TEXT);
+  // const [metamaskButtonText, setMetamaskButtonText] = useState(ONBOARD_TEXT);
   const [activatingConnector, setActivatingConnector] = useState();
   const navigate = useNavigate();
-  const { account, activate, connector, active, deactivate } = useWeb3React();
+  const { account, connector, active, deactivate } = useWeb3React();
   const onboarding = useRef();
 
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
@@ -56,7 +52,7 @@ function CommonPage({
       if (account && account.length > 0) {
         onboarding.current.stopOnboarding();
       } else {
-        setMetamaskButtonText(CONNECT_TEXT);
+        // setMetamaskButtonText(CONNECT_TEXT);
       }
     }
   }, [account]);
@@ -67,9 +63,7 @@ function CommonPage({
     }
   }, [activatingConnector, connector]);
 
- 
 
-  //
   const onLogoutClick = () => {
     if (active) {
       deactivate();
@@ -94,7 +88,7 @@ function CommonPage({
       <div>
         <div className="master-content">
           <LeftSideSection>
-            <img className="BombImg" src={Img} />
+            <img className="BombImg" src={Img} alt='' />
           </LeftSideSection>
 
           <RightSideSection>
